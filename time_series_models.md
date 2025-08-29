@@ -5,12 +5,15 @@ Time series forecasting is a specialized field of machine learning dedicated to 
 
 A time series can be broken down into several key components 
 
-Trend: The long-term increase or decrease in the data.
+#### Trend: 
+The long-term increase or decrease in the data.
 Seasonality: A repeating pattern that occurs at fixed and known intervals (e.g., daily, weekly, or yearly).
 
-Cycles: Patterns that repeat but do not have a fixed period, unlike seasonality.
+#### Cycles: 
+Patterns that repeat but do not have a fixed period, unlike seasonality.
 
-Noise: Random, irregular fluctuations that are not explained by the other components.
+#### Noise: 
+Random, irregular fluctuations that are not explained by the other components.
 
 The fundamental goal is to create a model that can distinguish the underlying signal (trend, seasonality, cycles) from the noise to make accurate predictions about the future.1 At the heart of this challenge lies the bias-variance tradeoff.5 Bias refers to the simplifying assumptions made by a model. High-bias models may fail to capture complex temporal patterns (underfitting). Variance refers to how much a model's prediction would change if trained on different data. High-variance models can be overly flexible and model the noise in the training data, leading to poor generalization on future data (overfitting).6 The evolution of forecasting models, from classical statistical methods to complex neural architectures, represents a continuous effort to navigate this tradeoff and effectively model the intricate dynamics of time-dependent data.
 
