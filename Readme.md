@@ -54,3 +54,4 @@
             <li> Both Trend and Seasonality </li>
             <p> To obtain stationarity time series we initially do seasonal difference to remove seasonality and if trend is still persistent on it we do first order difference on it </p>
 </ul>
+
