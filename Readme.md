@@ -30,4 +30,4 @@
 <p><b>The primary objective of many forecasting methodologies is to isolate, model, and extrapolate these components to predict future values. </b></p>
 <hr>
 <h4> The Concept of Stationarity </h4>
-<p>Among the properties of a time series, stationarity is paramount, particularly for classical statistical models.<p>
+<p>Among the properties of a time series, stationarity is paramount, particularly for classical statistical models. <b> A Time Series is considered stationary if its statstical properties, specifically mean, variance and autocovariance structure remains constant over time </b> In simpler terms <b> A Stationary series doesn't exhibit a trend or predictable seasonality pattern </b> Its behavior is consistant no matter when it is observed.</p>
