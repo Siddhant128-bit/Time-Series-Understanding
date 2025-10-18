@@ -28,3 +28,4 @@
 <img src='https://av-eks-blogoptimized.s3.amazonaws.com/98012Fig1Grph56227.png'>
 <br>
 <p><b>The primary objective of many forecasting methodologies is to isolate, model, and extrapolate these components to predict future values. </b></p>
+<hr>
