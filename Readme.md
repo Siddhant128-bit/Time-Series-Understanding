@@ -55,3 +55,85 @@
             <p> To obtain stationarity time series we initially do seasonal difference to remove seasonality and if trend is still persistent on it we do first order difference on it </p>
 </ul>
 
+### 📈 Differencing in Time Series Analysis
+
+**Differencing** is a technique used to make a **non-stationary** time series **stationary** by removing trends and/or seasonality. A stationary series has statistical properties (like mean and variance) that do not change over time, which is often a requirement for many time series forecasting models (e.g., ARIMA).
+
+---
+
+### 1️⃣ First-Order Differencing (for Trend)
+
+This technique is used to remove a **linear or near-linear trend** from the data.
+
+#### Formula
+
+The first difference at time $t$ is the value at $t$ minus the value at the previous period ($t-1$):
+
+$$
+y_{t}' = y_{t} - y_{t-1}
+$$
+
+### Example (Removing Trend)
+
+| Time | Original ($y_t$) | First Difference ($y_t' = y_t - y_{t-1}$) |
+| :--: | :-------------: | :-------------------------------------: |
+| t=1  | 10              | —                                       |
+| t=2  | 12              | 2                                       |
+| t=3  | 14              | 2                                       |
+| t=4  | 16              | 2                                       |
+| t=5  | 18              | 2                                       |
+
+**New Series:** $2, 2, 2, 2 \rightarrow$ **✅ Stationary** (trend removed, as mean and variance are constant).
+
+---
+
+### 2️⃣ Seasonal Differencing (for Seasonality)
+
+This technique is used to remove a **repeating seasonal pattern** that occurs every $s$ periods.
+
+### Formula
+
+The seasonal difference at time $t$ is the value at $t$ minus the value from the same period in the previous cycle ($t-s$):
+
+$$
+y_{t}' = y_{t} - y_{t-s}
+$$
+
+Where $s$ is the **seasonal period** (e.g., $s=12$ for monthly data with yearly seasonality, or $s=4$ for quarterly data).
+
+### Example (Quarterly Data, $s=4$)
+
+| Quarter | $y_t$ | Seasonal Difference ($y_t - y_{t-4}$) |
+| :-----: | :---: | :-----------------------------------: |
+| Q1\_2021 | 10    | —                                     |
+| Q2\_2021 | 20    | —                                     |
+| Q3\_2021 | 10    | —                                     |
+| Q4\_2021 | 20    | —                                     |
+| Q1\_2022 | 11    | 1 (11 - 10)                           |
+| Q2\_2022 | 21    | 1 (21 - 20)                           |
+| Q3\_2022 | 11    | 1 (11 - 10)                           |
+| Q4\_2022 | 21    | 1 (21 - 20)                           |
+
+**New Series:** $1, 1, 1, 1 \rightarrow$ **✅ Stationary** (seasonality removed).
+
+---
+
+### 3️⃣ Combined Differencing (Trend + Seasonality)
+
+When a series exhibits **both a trend and a seasonal pattern**, both types of differencing are applied. The order generally doesn't matter mathematically, but it's often preferred to apply the **seasonal difference first** to stabilize the variance associated with seasonality.
+
+### Step 1: Seasonal Differencing (Remove Seasonality)
+
+First, apply the seasonal difference to the original series $y_t$:
+$$
+y_{t}' = y_{t} - y_{t-s}
+$$
+
+### Step 2: First-Order Differencing (Remove Remaining Trend)
+
+Next, apply the first-order difference to the *new, seasonally-differenced* series $y_{t}'$:
+$$
+y_{t}'' = y_{t}' - y_{t-1}'
+$$
+
+This combined approach is typical for series like **monthly sales data** where both a long-term growth (trend) and a yearly cycle (seasonality, $s=12$) are present.
