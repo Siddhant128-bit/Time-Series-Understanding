@@ -44,4 +44,13 @@
 <ul>
     <li> Step 1: Visual Inspection for Identification </li>
     <p> The first and most intuitive step is alwys to create a time series plot of the data. <b> Visual analysis serves as the primary diagnositic tool to detect obvious features like trend and seasonality. </b> Plotting aggregated data like the mean flow for each month of the year can reveal the underlying seasonal pattern unambigiously </p>
+    <li> Step 2: Differencing to have Stationarity </li>
+    <p> If visual inspection reveals non-stationarity, the most common technique to stabilize the series mean is differentiating. <b> The process invovlves creating new time series of the differences between consecutive observations </b> Differencing are of following types: </p>
+        <ol>
+            <li> First Order Difference </li>
+            <p> First order difference removes the trend, leaving a series of period over period changes.</p>
+            <li> Seasonal Difference</li>
+            <p> It is applied where the value from the previous season is subtracted. For monthly data with a yearly seasonality, this would be a lag-12 difference </p>
+            <li> Both Trend and Seasonality </li>
+            <p> To obtain stationarity time series we initially do seasonal difference to remove seasonality and if trend is still persistent on it we do first order difference on it </p>
 </ul>
