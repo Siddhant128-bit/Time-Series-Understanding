@@ -29,3 +29,5 @@
 <br>
 <p><b>The primary objective of many forecasting methodologies is to isolate, model, and extrapolate these components to predict future values. </b></p>
 <hr>
+<h4> The Concept of Stationarity </h4>
+<p>Among the properties of a time series, stationarity is paramount, particularly for classical statistical models.<p>
