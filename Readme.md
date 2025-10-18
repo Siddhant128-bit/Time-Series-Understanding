@@ -15,3 +15,12 @@
         <li> Cyclicity </li>
     </ol>
 </p>
+<br>
+<ol>
+    <li> Trend </li> <p> &nbsp;&nbsp; It is long term underlying movement of the series.It is the persistent long run increase or decrease of the data. Such as steady growth of revenue over several years </p>
+    <li> Seasonality </li><p>&nbsp;&nbsp; It is predictable, repeating pattern or fluctuations that occur at regular interval. For example, retail sales often exhibit strong weekly seasonality (higher on weekends) and yearly  </p>
+    <li> Cyclicity </li><p>&nbsp;&nbsp; It is pattern that repeats over time but are not fixed. Calendar based periods, Business cycles may show expansion and contraction over several years </p>
+</ol>
+
+<p> The figure below gives general idea of all major components </p>
+<img src='https://av-eks-blogoptimized.s3.amazonaws.com/98012Fig1Grph56227.png'>
