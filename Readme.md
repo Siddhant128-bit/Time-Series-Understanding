@@ -40,3 +40,8 @@
 
 <h4> Steps for Time Series Analysis </h4>
 <p> Any standard Time series analysis comprises of 2 major steps, first is to identify the characteristics of the graph (identify trend, Seasonality and Cyclicity). Then Convert the time series to stationary if needed for further analysis </p>
+
+<ul>
+    <li> Step 1: Visual Inspection for Identification </li>
+    <p> The first and most intuitive step is alwys to create a time series plot of the data. <b> Visual analysis serves as the primary diagnositic tool to detect obvious features like trend and seasonality. </b> Plotting aggregated data like the mean flow for each month of the year can reveal the underlying seasonal pattern unambigiously </p>
+</ul>
