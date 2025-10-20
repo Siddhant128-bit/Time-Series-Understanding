@@ -399,3 +399,40 @@ Prophet has two major strengths that make it an excellent baseline forecasting m
     * Exogenous regressors
 
 <hr>
+
+## ⚙️ Prophet Workflow and Key Features
+
+### ✅ 1. Prophet is Designed to Be Easy (like `sklearn`)
+
+Prophet follows a very standard structure, similar to `scikit-learn` models:
+
+1.  You **create** the model.
+2.  You **fit** it with historical data.
+3.  You create **future dates**.
+4.  You **predict**.
+
+This familiar workflow makes it both beginner-friendly and production-ready.
+
+### ✅ 2. Data Must Be in the Right Format
+
+Prophet only needs two columns in a pandas DataFrame:
+
+| Column | Purpose |
+| :---: | :--- |
+| `ds` | The **date/time** column (e.g., `2024-10-01` or `2024-10-01 15:30:00`). |
+| `y` | The **numerical value** you're forecasting. |
+
+📌 **Example:**
+
+```python
+import pandas as pd
+from prophet import Prophet
+
+df = pd.DataFrame({
+    'ds': ['2024-01-01', '2024-01-02', '2024-01-03'],
+    'y': [123, 150, 170]
+})
+```
+Note: If your columns aren’t named exactly ds and y, Prophet won’t work.
+
+### ✅ 3. The Full Fit–Predict Workflow
