@@ -372,3 +372,26 @@ This is the irreducible error or residual term.
 
 <hr>
 <h3 align='left'>✅ Why Prophet Works So Well as a Baseline </h3>
+<P>Prophet has two major strengths: <br></p>
+<ol>
+    <li> <b>Fully Automatic </b></li>
+    <p>You can throw your dataset at it with:</p>
+        ```
+            model = Prophet()
+            model.fit(df)
+            forecast = model.predict(future)       
+        ```
+        And it just works — even with:
+        Missing values
+        Outliers
+        Irregular frequency
+        Complex patterns
+    <li><b>Highly Tunable</b></li>
+    <p>You can easily adjust things like:
+        Change points in trend
+        Strength of seasonality
+        Custom holidays
+        Growth saturation
+        Regressors
+    </p>
+</ol>
