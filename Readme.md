@@ -371,3 +371,4 @@ This is the irreducible error or residual term.
     👉 *“What’s left over after accounting for trend, seasonality, and events?”*
 
 <hr>
+<h3 align='left'>✅ Why Prophet Works So Well as a Baseline </h3>
