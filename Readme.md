@@ -301,3 +301,72 @@ The data shows a clear pattern of **strong direct dependence only at lag 1**. Th
 
 <hr>
 <h2 align='left'>2.1. Meta's Prophet as Basline</h2>
+<p>
+Before jumping into complex models (like ARIMA, LSTMs, or Transformers), you always need a baseline — something fast, reliable, and interpretable to measure future improvements against.
+Prophet is perfect for that because:
+<ul>
+    <li> It works well even with messy, real-world data </li>
+    <li> It’s easy to use (minimal tuning needed) </li>
+    <li> It handles seasonality, trends, and holidays automatically </li>
+    <li> It gives interpretable components you can analyze </li>
+</ul>
+So instead of guessing what advanced model to use, Prophet gives you a solid starting point.
+</p>
+
+## ✅ Core Idea: Prophet Breaks Time Series into 4 Parts 🧱
+
+Prophet, the forecasting model developed by Facebook (Meta), assumes your time series $y(t)$ is made up of four main components combined through an **additive model**:
+
+$$
+y(t) = g(t) + s(t) + h(t) + \epsilon_t
+$$
+
+Let's break these down in plain terms:
+
+---
+
+### 1️⃣ Trend — $g(t)$
+
+This component captures the overall, non-periodic direction of the data over the long run.
+
+* **What it represents:** Are values rising? Flattening? Saturating?
+* **How Prophet models it:**
+    * **Piecewise linear segments** (default): Assumes a constant growth rate that can change abruptly at automatically detected "changepoints."
+    * **Logistic growth:** Used if there's a natural **ceiling/cap** to the series (e.g., market saturation).
+* **Think of it as:**
+    👉 *“Where is the time series heading in the long run?”*
+
+---
+
+### 2️⃣ Seasonality — $s(t)$
+
+These are patterns that repeat at fixed, known intervals (e.g., daily, weekly, or yearly cycles).
+
+* **Examples:**
+    * **Daily:** Traffic spikes at rush hour.
+    * **Weekly:** Restaurant rush on weekends.
+    * **Yearly:** Retail holiday spikes.
+* **How Prophet models it:** It uses **Fourier series** to mathematically approximate these smooth, repeating cycles.
+* **Think of it as:**
+    👉 *“What patterns repeat predictably over time?”*
+
+---
+
+### 3️⃣ Holidays / Events — $h(t)$
+
+This component models the predictable but non-seasonal impact of special events, which often cause large, short-term spikes or drops.
+
+* **Examples:** Christmas, Black Friday, local holidays, major company promotions, or strikes.
+* **How Prophet models it:** You specify a dataframe of custom event dates, and Prophet estimates the *additive effect* of those events on the forecast.
+* **Think of it as:**
+    👉 *“What rare events cause spikes or drops?”*
+
+---
+
+### 4️⃣ Noise — $\epsilon_t$
+
+This is the irreducible error or residual term.
+
+* **What it represents:** Randomness, measurement error, or any short-term fluctuations that the deterministic model components ($g(t)$, $s(t)$, $h(t)$) cannot fully explain.
+* **Think of it as:**
+    👉 *“What’s left over after accounting for trend, seasonality, and events?”*
