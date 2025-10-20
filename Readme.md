@@ -436,3 +436,21 @@ df = pd.DataFrame({
 Note: If your columns aren’t named exactly ds and y, Prophet won’t work.
 
 ### ✅ 3. The Full Fit–Predict Workflow
+Here’s the standard pipeline:
+
+```python
+# 1. Create the model
+m = Prophet()                          
+
+# 2. Train it on historical data
+m.fit(df)                             
+
+# 3. Create future dates to forecast (e.g., 365 periods)
+future = m.make_future_dataframe(
+    periods=365
+)
+
+# 4. Get predictions
+forecast = m.predict(future)
+```
+
