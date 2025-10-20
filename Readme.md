@@ -454,3 +454,10 @@ future = m.make_future_dataframe(
 forecast = m.predict(future)
 ```
 
+✅ The forecast DataFrame contains:
+
+`yhat` → Predicted values (point forecast).
+
+`yhat_lower` and `yhat_upper` → Uncertainty ranges (confidence intervals).
+
+Individual trend values & seasonal components.
