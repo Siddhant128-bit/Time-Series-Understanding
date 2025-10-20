@@ -137,3 +137,4 @@ y_{t}'' = y_{t}' - y_{t-1}'
 $$
 
 This combined approach is typical for series like **monthly sales data** where both a long-term growth (trend) and a yearly cycle (seasonality, $s=12$) are present.
+<hr>
