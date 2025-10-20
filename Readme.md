@@ -461,3 +461,69 @@ forecast = m.predict(future)
 `yhat_lower` and `yhat_upper` → Uncertainty ranges (confidence intervals).
 
 Individual trend values & seasonal components.
+
+### ✅ 4. Visualization (Very Useful in Reporting)
+
+Prophet provides built-in plots that are valuable for analysis and stakeholder communication:
+
+```python
+m.plot(forecast)                  # Shows past + forecast + confidence interval
+m.plot_components(forecast)       # Breaks the forecast into trend, seasonality, holidays
+```
+
+These are essential for explaining model decomposition in interviews or reports.
+
+---
+
+### ✅ 5. Prophet Can Be Tuned (Advanced + Domain Knowledge)
+
+Prophet's power comes from its ability to incorporate domain knowledge through tuning.
+
+### 🔹 A) Trend Changepoints (controls trend flexibility)
+
+**Parameter:** `changepoint_prior_scale`
+
+- Small value (e.g., `0.001`) → Trend is rigid (doesn’t react quickly).
+- Large value (e.g., `0.5`) → Trend is flexible (adapts fast to changes), risking overfitting.
+
+---
+
+### 🔹 B) Seasonality (controls how patterns repeat)
+
+Prophet models seasonality using Fourier series. You can customize standard seasons or add new ones:
+
+```python
+# Change yearly seasonality detail (e.g., from default 10 to 20 terms)
+m = Prophet(yearly_seasonality=20)
+
+# Add custom seasonal cycles (e.g., quarterly)
+m.add_seasonality(
+    name='quarterly',
+    period=91.25,
+    fourier_order=5
+)
+```
+
+---
+
+### 🔹 C) Holidays and Extra Regressors
+
+You can incorporate domain-specific knowledge to improve accuracy.
+
+**Holidays:** Specify a separate DataFrame of event dates.
+
+```python
+m = Prophet(holidays=holidays_df)  # holidays_df contains ds and holiday name
+```
+
+**Extra Regressors:** Add other variables that influence the target variable, such as:
+
+- Weather
+- Ad spend
+- Pricing changes
+
+```python
+m.add_regressor('marketing_spend')  # Note: 'marketing_spend' column must be present in both the training (df) and future DataFrames.
+```
+
+This allows the model to evolve with your specific business context.
