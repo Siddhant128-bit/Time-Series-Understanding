@@ -299,7 +299,6 @@ The data shows a clear pattern of **strong direct dependence only at lag 1**. Th
     This section provides a structured learning path through these models, progressing from the interpretable and automated Prophet to the feature-intensive XGBoost, and finally to the probabilistic deep learning approaches of DeepAR and NeuralProphet. Mastering this spectrum is essential for fulfilling the core responsibility of pivoting between different models to address specific business problems.
 </p>
 
-<hr>
 <h3 align='left'>2.1. Meta's Prophet as Basline</h3>
 <p>
 Before jumping into complex models (like ARIMA, LSTMs, or Transformers), you always need a baseline — something fast, reliable, and interpretable to measure future improvements against.
@@ -370,3 +369,5 @@ This is the irreducible error or residual term.
 * **What it represents:** Randomness, measurement error, or any short-term fluctuations that the deterministic model components ($g(t)$, $s(t)$, $h(t)$) cannot fully explain.
 * **Think of it as:**
     👉 *“What’s left over after accounting for trend, seasonality, and events?”*
+
+<hr>
