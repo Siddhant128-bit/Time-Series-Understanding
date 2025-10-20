@@ -25,7 +25,7 @@
 </ol>
 
 <p> The figure below gives general idea of all major components </p>
-<img src='https://av-eks-blogoptimized.s3.amazonaws.com/98012Fig1Grph56227.png'>
+<img src='fig_1.png'>
 <br>
 <p><b>The primary objective of many forecasting methodologies is to isolate, model, and extrapolate these components to predict future values. </b></p>
 <hr>
@@ -300,7 +300,7 @@ The data shows a clear pattern of **strong direct dependence only at lag 1**. Th
 </p>
 
 <hr>
-<h2 align='left'>2.1. Meta's Prophet as Basline</h2>
+<h3 align='left'>2.1. Meta's Prophet as Basline</h3>
 <p>
 Before jumping into complex models (like ARIMA, LSTMs, or Transformers), you always need a baseline — something fast, reliable, and interpretable to measure future improvements against.
 Prophet is perfect for that because:
