@@ -138,3 +138,157 @@ $$
 
 This combined approach is typical for series like **monthly sales data** where both a long-term growth (trend) and a yearly cycle (seasonality, $s=12$) are present.
 <hr>
+
+## 🕰️ Time Series: ACF and PACF Explained
+
+The **Autocorrelation Function (ACF)** and the **Partial Autocorrelation Function (PACF)** are essential tools for identifying the underlying structure (like AR or MA) of a time series.
+
+***
+
+### ✅ What is ACF (Autocorrelation Function)?
+
+ACF measures the **linear relationship** between an observation at the current time ($X_t$) and observations at previous time steps ($X_{t-k}$), known as lags. It includes both **direct and indirect effects**.
+
+| Lag | Relationship Measured | Key Feature |
+| :---: | :--- | :--- |
+| **Lag 1 ACF** | Correlation between $X_t$ and $X_{t-1}$ | Only direct effect. |
+| **Lag 2 ACF** | Correlation between $X_t$ and $X_{t-2}$ | Includes both direct correlation and **indirect effects** (passing through $X_{t-1}$). |
+| **Lag $k$ ACF** | Correlation between $X_t$ and $X_{t-k}$ | Includes the **direct effect** and the **cumulative indirect effects** from all intermediate lags ($X_{t-1}, \dots, X_{t-k+1}$). |
+
+**Used for:** Determining the order ($q$) of a **Moving Average ($\text{MA}(q)$)** model, as the ACF typically **cuts off** (drops to near zero) after $q$ significant lags.
+
+***
+
+### ✅ What is PACF (Partial Autocorrelation Function)?
+
+PACF measures the **direct correlation** between an observation at the current time ($X_t$) and an observation at a previous time step ($X_{t-k}$), **after removing the linear effects of all the observations in between** ($X_{t-1}, X_{t-2}, \dots, X_{t-k+1}$).
+
+| Lag | Relationship Measured | Purpose |
+| :---: | :--- | :--- |
+| **Lag 1 PACF** | Same as Lag 1 ACF. | No intermediate lags to account for. |
+| **Lag 2 PACF** | Correlation between $X_t$ and $X_{t-2}$ **after removing the influence of $X_{t-1}$**. | To isolate the true direct correlation path. |
+| **Lag 3 PACF** | Correlation between $X_t$ and $X_{t-3}$ **after removing the influence of $X_{t-1}$ and $X_{t-2}$**. | Helps detect the true order of AR terms. |
+
+**Used for:** Determining the order ($p$) of an **Autoregressive ($\text{AR}(p)$)** model, as the PACF typically **cuts off** after $p$ significant lags.
+
+<hr>
+
+## Time Series Analysis: Mean, ACF, and PACF Calculation
+
+**Series $X$:**
+$$
+X=[2, 4, 6, 8, 10, 12]
+$$
+
+We will compute: Mean, ACF at lags 1, 2, 3, PACF at lag 1 and lag 2, and provide an interpretation.
+
+### ✅ STEP 1 — Compute the Mean
+
+The mean ($\bar{X}$) is calculated as:
+$$
+\bar{X} = \frac{2 + 4 + 6 + 8 + 10 + 12}{6} = \frac{42}{6} = 7
+$$
+
+We'll use deviations from the mean ($Y_t = X_t - \bar{X}$) for correlation calculations:
+
+| $t$ | $X_t$ | $X_t - \bar{X}$ |
+| :---: | :---: | :---: |
+| 1 | 2 | -5 |
+| 2 | 4 | -3 |
+| 3 | 6 | -1 |
+| 4 | 8 | +1 |
+| 5 | 10 | +3 |
+| 6 | 12 | +5 |
+
+The mean-adjusted series $Y$ is:
+$$
+Y=[-5, -3, -1, 1, 3, 5]
+$$
+
+### ✅ STEP 2 — Compute ACF
+
+The general ACF formula at lag $k$ is:
+$$
+\rho_k = \frac{\sum_{t=k+1}^{n} (Y_t)(Y_{t-k})}{\sum_{t=1}^{n} Y_t^2}
+$$
+
+First, compute the **denominator** (Total Sum of Squares), which is constant for all lags:
+$$
+\sum_{t=1}^{6} Y_t^2 = (-5)^2 + (-3)^2 + (-1)^2 + 1^2 + 3^2 + 5^2 = 25 + 9 + 1 + 1 + 9 + 25 = 70
+$$
+
+**✅ ACF at Lag 1 ($\rho_1$):**
+Pairs: $(Y_2, Y_1), (Y_3, Y_2), (Y_4, Y_3), (Y_5, Y_4), (Y_6, Y_5)$
+Numerator:
+$$
+\sum (Y_t \cdot Y_{t-1}) = (-3)(-5) + (-1)(-3) + (1)(-1) + (3)(1) + (5)(3) \\
+= 15 + 3 - 1 + 3 + 15 = 35
+$$
+So:
+$$
+\rho_1 = \frac{35}{70} = \mathbf{0.5}
+$$
+
+**✅ ACF at Lag 2 ($\rho_2$):**
+Pairs: $(Y_3, Y_1), (Y_4, Y_2), (Y_5, Y_3), (Y_6, Y_4)$
+Numerator:
+$$
+\sum (Y_t \cdot Y_{t-2}) = (-1)(-5) + (1)(-3) + (3)(-1) + (5)(1) \\
+= 5 - 3 - 3 + 5 = 4
+$$
+So:
+$$
+\rho_2 = \frac{4}{70} \approx \mathbf{0.0571}
+$$
+
+**✅ ACF at Lag 3 ($\rho_3$):**
+Pairs: $(Y_4, Y_1), (Y_5, Y_2), (Y_6, Y_3)$
+Numerator:
+$$
+\sum (Y_t \cdot Y_{t-3}) = (1)(-5) + (3)(-3) + (5)(-1) \\
+= -5 - 9 - 5 = -19
+$$
+So:
+$$
+\rho_3 = \frac{-19}{70} \approx \mathbf{-0.2714}
+$$
+
+| Lag | ACF |
+| :---: | :---: |
+| 1 | 0.50 |
+| 2 | 0.057 |
+| 3 | -0.271 |
+
+### ✅ STEP 3 — Compute PACF
+
+**👉 PACF at lag 1 ($\phi_{11}$):**
+PACF at lag 1 is the same as ACF lag 1:
+$$
+\phi_{11} = \rho_1 = \mathbf{0.5}
+$$
+
+**👉 PACF at lag 2 ($\phi_{22}$):**
+We use the Yule–Walker formula to remove the effect of lag 1:
+$$
+\phi_{22} = \frac{\rho_2 - \rho_1^2}{1 - \rho_1^2}
+$$
+Substitute the values $\rho_1=0.5$ and $\rho_2 \approx 0.0571$:
+$$
+\phi_{22} = \frac{0.0571 - (0.5)^2}{1 - (0.5)^2} = \frac{0.0571 - 0.25}{1 - 0.25} = \frac{-0.1929}{0.75} \approx \mathbf{-0.2572}
+$$
+
+| Lag | PACF |
+| :---: | :---: |
+| 1 | 0.50 |
+| 2 | -0.257 |
+
+### ✅ STEP 4 — Interpretation
+
+* **ACF lag 1 ($0.50$):** Indicates a **moderate positive correlation** with the immediate past value.
+* **ACF dies quickly:** The correlation drops off significantly after lag 1 (from $0.50$ to $0.057$), suggesting the influence of the past is primarily **direct**.
+* **PACF lag 1 ($0.50$):** High direct correlation.
+* **PACF lag 2 ($-0.257$):** This value is much smaller (in magnitude) than lag 1, suggesting that the $\text{ACF}$ seen at lag 2 and beyond is **mostly indirect** and explained by the relationship at lag 1.
+
+**✅ Conclusion:**
+
+The data shows a clear pattern of **strong direct dependence only at lag 1**. This is behavior highly consistent with a simple $\text{AR}(1)$ structure, where the current value is strongly dependent on the previous one, and little else. (This is expected since the series $X$ is perfectly linear, $X_t = X_{t-1} + 2$).
