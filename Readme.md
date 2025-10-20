@@ -371,27 +371,29 @@ This is the irreducible error or residual term.
     👉 *“What’s left over after accounting for trend, seasonality, and events?”*
 
 <hr>
-<h3 align='left'>✅ Why Prophet Works So Well as a Baseline </h3>
-<P>Prophet has two major strengths: <br></p>
-<ol>
-    <li> <b>Fully Automatic </b></li>
-    <p>You can throw your dataset at it with:</p>
-        ```
-            model = Prophet()
-            model.fit(df)
-            forecast = model.predict(future)       
-        ```
-        And it just works — even with:
-        Missing values
-        Outliers
-        Irregular frequency
-        Complex patterns
-    <li><b>Highly Tunable</b></li>
-    <p>You can easily adjust things like:
-        Change points in trend
-        Strength of seasonality
-        Custom holidays
-        Growth saturation
-        Regressors
-    </p>
-</ol>
+### ✅ Why Prophet Works So Well as a Baseline 💡
+
+Prophet has two major strengths that make it an excellent baseline forecasting model:
+
+1.  **Fully Automatic**
+    You can throw your dataset at it with minimal configuration:
+
+    ```python
+    model = Prophet()
+    model.fit(df)
+    forecast = model.predict(future)       
+    ```
+
+    And it just works — even with common time series complexities like:
+    * Missing values
+    * Outliers
+    * Irregular frequency
+    * Complex patterns
+
+2.  **Highly Tunable**
+    For situations requiring optimization, you can easily adjust key structural components:
+    * Change points in trend (flexibility)
+    * Strength of seasonality (damping)
+    * Custom holidays and events
+    * Growth saturation (caps and floors)
+    * Exogenous regressors
