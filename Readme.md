@@ -397,3 +397,5 @@ Prophet has two major strengths that make it an excellent baseline forecasting m
     * Custom holidays and events
     * Growth saturation (caps and floors)
     * Exogenous regressors
+
+<hr>
