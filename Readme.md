@@ -1,7 +1,7 @@
 <h1 align='center'> Time Series Learning </h1>
 <br>
 <hr>
-<h3 align='left'>Part I: The Theoretical Bedrock of Time Series Analysis </h3>
+<h2 align='left'>Part I: The Theoretical Bedrock of Time Series Analysis </h2>
 <p>
     A robust understanding of the statistical properties inherent in time-series data is the indispensable foundation upon which all reliable forecasting models are built. <b> Without this theoretical grounding, the application of even the most sophisticated machine learning algorithms becomes a high-risk exercise in pattern-matching without comprehension, often leading to models that are brittle, misleading, and perform poorly on unseen data.</b> This section establishes that essential foundation, covering the core components of time series, the critical concept of stationarity, and the diagnostic tools used to identify underlying data structures.
 </p>
@@ -292,3 +292,12 @@ $$
 **✅ Conclusion:**
 
 The data shows a clear pattern of **strong direct dependence only at lag 1**. This is behavior highly consistent with a simple $\text{AR}(1)$ structure, where the current value is strongly dependent on the previous one, and little else. (This is expected since the series $X$ is perfectly linear, $X_t = X_{t-1} + 2$).
+
+<hr>
+<h2 align='left'>  Part 2: A Spectrum of Forecasting Models</h2>
+<p>
+    This section provides a structured learning path through these models, progressing from the interpretable and automated Prophet to the feature-intensive XGBoost, and finally to the probabilistic deep learning approaches of DeepAR and NeuralProphet. Mastering this spectrum is essential for fulfilling the core responsibility of pivoting between different models to address specific business problems.
+</p>
+
+<hr>
+<h2 align='left'>2.1. Meta's Prophet as Basline</h2>
