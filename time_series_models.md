@@ -1,4 +1,6 @@
-# A Comparative Analysis of Models for Time Series Forecasting #
+# A Comparative Analysis of Models for Time Series Forecasting 
+
+
 ## Part I: Foundational Paradigms in Predictive Modeling
 ### 1.1 The Landscape of Time Series Forecasting
 Time series forecasting is a specialized field of machine learning dedicated to predicting future values based on historically collected data points ordered in time.1 Unlike standard regression or classification problems where data points are often assumed to be independent, time series data is characterized by its temporal dependency, where each observation is related to its predecessors.2 This unique structure requires models that can understand and extrapolate patterns such as trends, seasonality, and cycles.
