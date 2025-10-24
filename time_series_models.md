@@ -45,3 +45,17 @@ This component models the relationship between an observation and the residual e
 The primary advantage of linear models like ARIMA is their interpretability and simplicity.3 They are well-suited for shorter-term forecasts and work effectively with stationary data or data that can be made stationary through differencing.3
 
 However, their main drawback is the core assumption of linearity.8 They perform poorly when the underlying relationship in the time series is non-linear and can struggle to capture complex seasonal patterns or long-term dependencies.3 Furthermore, ARIMA models often require manual intervention to identify the optimal parameters (p, d, q), typically by analyzing autocorrelation (ACF) and partial autocorrelation (PACF) plots.10
+
+### 1.3 Support Vector Machines: Maximizing the Margin for Forecasting
+Support Vector Machines (SVMs), adapted for regression tasks as Support Vector Regression (SVR), offer a powerful method for time series forecasting.15 They can capture complex, non-linear relationships in data by finding an optimal function that best fits the historical data points.16
+
+#### Mechanism
+The core principle of SVR is to find a function that deviates from the actual time series values by a value no greater than a specified margin, $\epsilon$ (epsilon). Instead of minimizing the error, the goal is to fit as many data points as possible within this margin. The data points that lie outside the margin, which are the most critical for defining the regression function, are known as support vectors.17
+The Kernel Trick
+The true power of SVR for time series is its ability to model non-linear patterns using the kernel trick.19 Instead of fitting a simple linear function, the kernel trick implicitly maps the time series data into a higher-dimensional space where a linear relationship can be found.16 This allows SVR to model complex temporal dependencies without explicitly defining the non-linear function. Common kernels include Linear, Polynomial, and the Radial Basis Function (RBF).15
+
+#### Pros and Cons for Time Series Forecasting
+SVRs offer several advantages. 
+They are known for their good generalization performance and are often robust to overfitting, especially in high-dimensional spaces (e.g., when using many lagged features).15 Their use of the kernel trick makes them highly flexible and capable of modeling complex, non-linear time series.16
+
+However, SVRs also have significant drawbacks for forecasting. Their performance is highly sensitive to the choice of the kernel and its associated hyperparameters, often requiring extensive tuning.15 Their primary limitation is computational complexity, which scales poorly with the size of the dataset, making them impractical for very long time series.15 They can also struggle with time series where past information strongly influences future trends over long periods.2
