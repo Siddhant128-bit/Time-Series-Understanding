@@ -525,5 +525,4 @@ m = Prophet(holidays=holidays_df)  # holidays_df contains ds and holiday name
 ```python
 m.add_regressor('marketing_spend')  # Note: 'marketing_spend' column must be present in both the training (df) and future DataFrames.
 ```
-
 This allows the model to evolve with your specific business context.
